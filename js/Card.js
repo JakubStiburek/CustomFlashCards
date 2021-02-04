@@ -3,6 +3,7 @@ export class Card {
         this.front = sides["front"];
         this.back = sides["back"];
         this.card = card;
+        this.setFront()
     }
     setFront() {
         this.card.textContent = this.front;
