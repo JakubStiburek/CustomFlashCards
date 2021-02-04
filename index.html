@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flashcards 1.1</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="main">
+        <div id="example-flashcards">
+            <h1 class="header">Who wrote the book?</h1>
+            <div id="example-fc-wrapper" class="wrapper"></div>
+        </div>
+        <div id="custom-flashcards">
+            <h2 class="header">Make your own flashcards</h2>
+            <form id="custom-fc-input">
+                <label for="front">Front</label>
+                <input id="front" type="text" placeholder="You'll see this">
+                <label for="back">Back</label>
+                <input id="back" type="text" placeholder="You'll learn this">
+                <input id="submit-button" type="submit" value="Submit card">
+            </form>
+            <div id="custom-fc-wrapper" class="wrapper"></div>
+        </div>
+    </div>
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,37 @@
+body {
+    background-color: grey;
+}
+#main {
+    width: max-content;
+    margin: auto;
+    text-align: center;
+}
+.header {
+    background-color: #76cbff;
+    width: max-content;
+    padding: 5px;
+    margin: 30px auto 30px auto;
+    border-radius: 10px;
+}
+.front {
+    background-color: #c8ff8b;
+    height: 200px;
+    width: 200px;
+    border-radius: 10px;
+    margin: 20px;
+}
+.back {
+    background-color: #ffd0ad;
+    height: 200px;
+    width: 200px;
+    border-radius: 10px;
+    margin: 20px;
+}
+.card:hover{
+    margin: 17px;
+    border: 3px solid #b0fff0;
+}
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
