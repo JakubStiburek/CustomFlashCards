@@ -9,15 +9,16 @@
 <body>
     <div id="main">
         <div id="example-flashcards">
-            <h1 class="header">Who wrote the book?</h1>
+            <h1 class="white-background header">Who wrote the book?</h1>
+            <p class="white-background" id="instructions">Left click turns the card. Right click deletes it. Keep turning the cards until you learn them, then delete them.</p>
             <div id="example-fc-wrapper" class="wrapper"></div>
         </div>
         <div id="custom-flashcards">
-            <h2 class="header">Make your own flashcards</h2>
+            <h2 class="white-background header">Make your own flashcards</h2>
             <form id="custom-fc-input">
-                <label for="front">Front</label>
+                <label id="front-label" for="front">Front</label>
                 <input id="front" type="text" placeholder="You'll see this">
-                <label for="back">Back</label>
+                <label id="back-label" for="back">Back</label>
                 <input id="back" type="text" placeholder="You'll learn this">
                 <input id="submit-button" type="submit" value="Submit card">
             </form>

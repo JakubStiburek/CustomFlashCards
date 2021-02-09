@@ -1,20 +1,29 @@
 body {
-    background-color: grey;
+    background-color: #1F0F0A;
 }
 #main {
     width: max-content;
     margin: auto;
     text-align: center;
 }
+.white-background{
+    background-color: white;
+}
+#instructions {
+    text-align: center;
+    padding: 10px;
+    margin: auto;
+    border-radius: 10px;
+    width: max-content;
+}
 .header {
-    background-color: #76cbff;
     width: max-content;
     padding: 5px;
     margin: 30px auto 30px auto;
     border-radius: 10px;
 }
 .front {
-    background-color: #c8ff8b;
+    background-color: #AEB43C;
     height: 200px;
     width: 200px;
     border-radius: 10px;
@@ -24,7 +33,7 @@ body {
     justify-content: center;
 }
 .back {
-    background-color: #ffd0ad;
+    background-color: #DAE6B3;
     height: 200px;
     width: 200px;
     border-radius: 10px;
@@ -40,4 +49,18 @@ body {
 .wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+input{
+    line-height: 30px;
+    border-radius: 3px;
+}
+#back-label {
+    background-color: #DAE6B3;
+    padding: 6px;
+    border-radius: 3px;
+}
+#front-label {
+    background-color: #AEB43C;
+    padding: 6px;
+    border-radius: 3px;
 }
