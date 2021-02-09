@@ -19,6 +19,9 @@ body {
     width: 200px;
     border-radius: 10px;
     margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .back {
     background-color: #ffd0ad;
@@ -26,12 +29,15 @@ body {
     width: 200px;
     border-radius: 10px;
     margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.card:hover{
+.cardText:hover{
     margin: 17px;
     border: 3px solid #b0fff0;
 }
 .wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }

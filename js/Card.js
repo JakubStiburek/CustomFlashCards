@@ -5,25 +5,32 @@ export class Card {
         this.card = card;
         this.setFront()
     }
+
     setFront() {
         this.card.textContent = this.front;
     }
+
     setBack() {
         this.card.textContent = this.back;
     }
+
     toggleClass() {
         this.card.classList.toggle("back")
         this.card.classList.toggle("front")
     }
-    clicked() {
-        if(this.card.classList.contains("front")){
+
+    leftClick() {
+        if (this.card.classList.contains("front")) {
             this.setBack();
             this.toggleClass();
-        }
-        else{
+        } else {
             this.setFront();
             this.toggleClass();
         }
 
+    }
+
+    rightClick() {
+            this.card.remove();
     }
 }
