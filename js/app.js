@@ -34,7 +34,7 @@ let customCardObjects = [];
 document.querySelector("#custom-fc-input").addEventListener("submit", event => {
     event.preventDefault();
     document.querySelector("#custom-fc-wrapper").insertAdjacentHTML("beforeend", "<div class='card'><p class='cardText front'></p></div>");
-
+    window.scrollTo(0,document.body.scrollHeight);
     const sides = {
         "back": input.back.value,
         "front": input.front.value

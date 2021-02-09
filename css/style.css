@@ -1,5 +1,11 @@
+html {
+    scroll-behavior: smooth;
+}
 body {
     background-color: #1F0F0A;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 #main {
     width: max-content;
