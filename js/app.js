@@ -50,5 +50,8 @@ document.querySelector("#custom-fc-input").addEventListener("submit", event => {
         newCard.rightClick();
     })
     customCardObjects.push(newCard);
+    // cleans the input form
+    input.front.value = "";
+    input.back.value = "";
 });
 /* Make custom cards. */
