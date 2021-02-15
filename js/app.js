@@ -102,6 +102,49 @@ cardObjects.forEach(cardObject => {
         cardObject.rightClick();
     })
 })
+//
+// Color picking for custom cards
+//
+
+const setFrontColorCustom = () => {
+    customCardObjects.forEach(customCardObject => {
+        customCardObject.changeColors(colors);
+        customCardObject.setColorFront();
+    })
+}
+
+// Resets cards which are currently turned to front, to be used after user picks color combination
+const resetToFrontCustom = () => {
+    customCardObjects.forEach(customCardObject => {
+        customCardObject.setFront();
+    })
+}
+
+// User picks a color combination
+const colorPickerCustom = () => {
+    // Listen to user choosing the color combination
+    pair1.addEventListener("click", () => {
+        resetToFrontCustom();
+        colors = colorCombinations[0];
+        setFrontColor();
+    })
+    pair2.addEventListener("click", () => {
+        resetToFrontCustom();
+        colors = colorCombinations[1];
+        setFrontColorCustom();
+    })
+    pair3.addEventListener("click", () => {
+        resetToFrontCustom();
+        colors = colorCombinations[2];
+        setFrontColorCustom();
+    })
+    pairInitial.addEventListener("click", () => {
+        resetToFrontCustom();
+        colors = colorCombinations[3];
+        setFrontColorCustom();
+    })
+    return colors;
+}
 
 //
 // Generate custom flashcards
@@ -137,12 +180,13 @@ document.querySelector("#custom-fc-input").addEventListener("submit", event => {
 
     // Make a single new instance of class Card
     // Pass sides = user input in the constructor and the most recent card element from cards array
-    const newCard = new Card(sides, cards[cards.length-1], ["#AEB43C", "#DAE6B3"]);
+    const newCard = new Card(sides, cards[cards.length-1], colorPickerCustom());
 
     //Add two event listeners, on click and on contextmenu event
     newCard.card.addEventListener("click", () => {
         console.log(newCard)
-        newCard.changeColors(["#AEB43C", "#DAE6B3"]);
+        const colors = colorPickerCustom();
+        newCard.changeColors(colors);
         newCard.leftClick();
     });
     newCard.card.addEventListener("contextmenu", event => {
@@ -152,6 +196,9 @@ document.querySelector("#custom-fc-input").addEventListener("submit", event => {
 
     // Save the newCard object in the array for custom cards
     customCardObjects.push(newCard);
+
+    // Immediate setting after user picks color combination
+    colorPickerCustom();
 
     // Clean the input form
     input.front.value = "";
