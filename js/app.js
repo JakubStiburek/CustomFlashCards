@@ -126,7 +126,7 @@ const colorPickerCustom = () => {
     pair1.addEventListener("click", () => {
         resetToFrontCustom();
         colors = colorCombinations[0];
-        setFrontColor();
+        setFrontColorCustom();
     })
     pair2.addEventListener("click", () => {
         resetToFrontCustom();
