@@ -44,16 +44,7 @@ body {
 .color-variant-pair:hover{
     opacity: 0.5;
 }
-.front {
-    height: 200px;
-    width: 200px;
-    border-radius: 10px;
-    margin: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.back {
+.cardText {
     height: 200px;
     width: 200px;
     border-radius: 10px;

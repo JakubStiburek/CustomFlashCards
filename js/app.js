@@ -2,7 +2,7 @@ import {Card} from "./Card.js"
 import {exampleCards} from "./exampleCards.js";
 
 //
-// Color picker
+// Color picking
 //
 
 // Set of available color combinations
@@ -23,15 +23,18 @@ const pairInitial = document.querySelector("#initial-variant-a");
 // Initially filled with original color combination
 let colors = ["#AEB43C", "#DAE6B3"];
 
-// Change all cards color according to what side is currently visible
-const changeVisibleSideColor = (colorCombo) => {
-    cards.forEach(card => {
-        if(card.classList.contains(".front")){
-            card.style.backgroundColor = colorCombo[0];
-        }
-        else{
-            card.style.backgroundColor = colorCombo[1];
-        }
+// Set front color, to be used after user picks color combination
+const setFrontColor = () => {
+    cardObjects.forEach(cardObject => {
+        cardObject.changeColors(colors);
+        cardObject.setColorFront();
+    })
+}
+
+// Resets cards which are currently turned to front, to be used after user picks color combination
+const resetToFront = () => {
+    cardObjects.forEach(cardObject => {
+        cardObject.setFront();
     })
 }
 
@@ -39,20 +42,24 @@ const changeVisibleSideColor = (colorCombo) => {
 const colorPicker = () => {
     // Listen to user choosing the color combination
     pair1.addEventListener("click", () => {
-        changeVisibleSideColor(colorCombinations[0]);
+        resetToFront();
         colors = colorCombinations[0];
+        setFrontColor();
     })
     pair2.addEventListener("click", () => {
+        resetToFront();
         colors = colorCombinations[1];
-        changeVisibleSideColor(colorCombinations[1]);
+        setFrontColor();
     })
     pair3.addEventListener("click", () => {
+        resetToFront();
         colors = colorCombinations[2];
-        changeVisibleSideColor(colorCombinations[2]);
+        setFrontColor();
     })
     pairInitial.addEventListener("click", () => {
+        resetToFront();
         colors = colorCombinations[3];
-        changeVisibleSideColor(colorCombinations[3]);
+        setFrontColor();
     })
     return colors;
 }
@@ -63,7 +70,6 @@ const colorPicker = () => {
 
 // Generate n number of card elements
 // Card consists of div and p elements
-
 const n = 8;
 for(let i=0; i < n; i++){
     document.querySelector("#example-fc-wrapper").insertAdjacentHTML("afterbegin", "<div class='card'><p class='cardText front'></p></div>");
@@ -79,6 +85,9 @@ let cardObjects = [];
 for(let i=0; i < n; i++){
     cardObjects[i] = new Card(exampleCards[i], cards[i], colors);
 }
+
+// Immediate setting after user picks color combination
+colorPicker();
 
 // Add event listener on click event for card within each class Card instance
 // Then add event listener on contextmenu event for card within each class Card instance
@@ -128,11 +137,12 @@ document.querySelector("#custom-fc-input").addEventListener("submit", event => {
 
     // Make a single new instance of class Card
     // Pass sides = user input in the constructor and the most recent card element from cards array
-    const newCard = new Card(sides, cards[cards.length-1]);
+    const newCard = new Card(sides, cards[cards.length-1], ["#AEB43C", "#DAE6B3"]);
 
     //Add two event listeners, on click and on contextmenu event
     newCard.card.addEventListener("click", () => {
         console.log(newCard)
+        newCard.changeColors(["#AEB43C", "#DAE6B3"]);
         newCard.leftClick();
     });
     newCard.card.addEventListener("contextmenu", event => {

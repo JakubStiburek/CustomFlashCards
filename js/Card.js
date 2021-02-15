@@ -1,9 +1,12 @@
 export class Card {
-    constructor(sides, card) {
+    constructor(sides, card, colors) {
         this.front = sides["front"];
         this.back = sides["back"];
         this.card = card;
-        this.setFront()
+        this.colorFront = colors[0];
+        this.colorBack = colors[1];
+        this.setFront();
+        this.setColorFront()
     }
 
     // Set front side text
@@ -16,10 +19,24 @@ export class Card {
         this.card.textContent = this.back;
     }
 
-    // Toggle css classes back and front responsible for change of background colour when card is being turned
     toggleClass() {
         this.card.classList.toggle("back")
         this.card.classList.toggle("front")
+    }
+
+    changeColors(newColors){
+        this.colorFront = newColors[0];
+        this.colorBack = newColors[1];
+    }
+
+    // Set color of card front side
+    setColorFront() {
+        this.card.style.backgroundColor = this.colorFront;
+    }
+
+    // Set color of card back side
+    setColorBack() {
+        this.card.style.backgroundColor = this.colorBack;
     }
 
     // Turn the card
@@ -27,9 +44,11 @@ export class Card {
         if (this.card.classList.contains("front")) {
             this.setBack();
             this.toggleClass();
+            this.setColorBack();
         } else {
             this.setFront();
             this.toggleClass();
+            this.setColorFront();
         }
     }
 
