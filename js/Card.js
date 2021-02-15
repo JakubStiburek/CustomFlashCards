@@ -19,11 +19,13 @@ export class Card {
         this.card.textContent = this.back;
     }
 
+    // Control which side is visible
     toggleClass() {
         this.card.classList.toggle("back")
         this.card.classList.toggle("front")
     }
 
+    // Overwrite current color combination
     changeColors(newColors){
         this.colorFront = newColors[0];
         this.colorBack = newColors[1];
