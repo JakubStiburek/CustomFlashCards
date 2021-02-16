@@ -1,8 +1,8 @@
 export class Card {
-    constructor(sides, card, colors) {
+    constructor(sides, cardTextText, colors) {
         this.front = sides["front"];
         this.back = sides["back"];
-        this.card = card;
+        this.cardText = cardTextText;
         this.colorFront = colors[0];
         this.colorBack = colors[1];
         this.setFront();
@@ -11,18 +11,18 @@ export class Card {
 
     // Set front side text
     setFront() {
-        this.card.textContent = this.front;
+        this.cardText.textContent = this.front;
     }
 
     // Set back side text
     setBack() {
-        this.card.textContent = this.back;
+        this.cardText.textContent = this.back;
     }
 
     // Control which side is visible
     toggleClass() {
-        this.card.classList.toggle("back")
-        this.card.classList.toggle("front")
+        this.cardText.classList.toggle("back")
+        this.cardText.classList.toggle("front")
     }
 
     // Overwrite current color combination
@@ -31,19 +31,19 @@ export class Card {
         this.colorBack = newColors[1];
     }
 
-    // Set color of card front side
+    // Set color of cardText front side
     setColorFront() {
-        this.card.style.backgroundColor = this.colorFront;
+        this.cardText.style.backgroundColor = this.colorFront;
     }
 
-    // Set color of card back side
+    // Set color of cardText back side
     setColorBack() {
-        this.card.style.backgroundColor = this.colorBack;
+        this.cardText.style.backgroundColor = this.colorBack;
     }
 
-    // Turn the card
+    // Turn the cardText
     leftClick() {
-        if (this.card.classList.contains("front")) {
+        if (this.cardText.classList.contains("front")) {
             this.setBack();
             this.toggleClass();
             this.setColorBack();
@@ -55,7 +55,7 @@ export class Card {
     }
 
     // Remove the p element but keep the div element, this leaves a blank spot on it's place
-    rightClick() {
-            this.card.remove();
+    removeCardText() {
+            this.cardText.remove();
     }
 }

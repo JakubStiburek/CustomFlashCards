@@ -92,14 +92,14 @@ colorPicker();
 // Add event listener on click event for card within each class Card instance
 // Then add event listener on contextmenu event for card within each class Card instance
 cardObjects.forEach(cardObject => {
-    cardObject.card.addEventListener("click", () => {
+    cardObject.cardText.addEventListener("click", () => {
         const colors = colorPicker();
         cardObject.changeColors(colors);
         cardObject.leftClick();
     })
-    cardObject.card.addEventListener("contextmenu", event => {
+    cardObject.cardText.addEventListener("contextmenu", event => {
         event.preventDefault();
-        cardObject.rightClick();
+        cardObject.removeCardText();
     })
 })
 //
@@ -163,6 +163,14 @@ let customCardObjects = [];
 document.querySelector("#custom-fc-input").addEventListener("submit", event => {
     event.preventDefault();
 
+    // Remove empty divs
+    const cardDivs = document.querySelectorAll("#custom-fc-wrapper .card");
+    cardDivs.forEach(cardDiv => {
+        if (cardDiv.childNodes.length === 0) {
+            cardDiv.remove();
+        }
+    })
+
     // Generate card element which consists of div and p elements
     document.querySelector("#custom-fc-wrapper").insertAdjacentHTML("beforeend", "<div class='card'><p class='cardText front'></p></div>");
 
@@ -183,19 +191,20 @@ document.querySelector("#custom-fc-input").addEventListener("submit", event => {
     const newCard = new Card(sides, cards[cards.length-1], colorPickerCustom());
 
     //Add two event listeners, on click and on contextmenu event
-    newCard.card.addEventListener("click", () => {
+    newCard.cardText.addEventListener("click", () => {
         console.log(newCard)
         const colors = colorPickerCustom();
         newCard.changeColors(colors);
         newCard.leftClick();
     });
-    newCard.card.addEventListener("contextmenu", event => {
+    newCard.cardText.addEventListener("contextmenu", event => {
         event.preventDefault();
-        newCard.rightClick();
+        newCard.removeCardText();
     })
 
     // Save the newCard object in the array for custom cards
     customCardObjects.push(newCard);
+
 
     // Immediate setting after user picks color combination
     colorPickerCustom();
@@ -206,4 +215,4 @@ document.querySelector("#custom-fc-input").addEventListener("submit", event => {
 });
 
 
-
+// TODO Mazani custom karet zanechava stiny, ktere dalsi karty posouvaji. Je to dost nahodne. Opravit metodu mazani.
