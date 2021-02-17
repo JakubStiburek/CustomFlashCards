@@ -117,6 +117,9 @@ const setFrontColorCustom = () => {
 const resetToFrontCustom = () => {
     customCardObjects.forEach(customCardObject => {
         customCardObject.setFront();
+        if(customCardObject.cardText.classList.contains("back")){
+            customCardObject.toggleClass();
+        }
     })
 }
 
@@ -205,9 +208,20 @@ document.querySelector("#custom-fc-input").addEventListener("submit", event => {
     // Save the newCard object in the array for custom cards
     customCardObjects.push(newCard);
 
+    // Reset cards - front text, front color, class front
+    const resetCards = () => {
+        customCardObjects.forEach(customCardObject => {
+            customCardObject.setFront();
+            customCardObject.setColorFront();
+            if(customCardObject.cardText.classList.contains("back")){
+                customCardObject.toggleClass();
+            }
+        })
+    }
 
-    // Immediate setting after user picks color combination
+    // Immediate setting after user picks adds a card
     colorPickerCustom();
+    resetCards();
 
     // Clean the input form
     input.front.value = "";
@@ -215,4 +229,4 @@ document.querySelector("#custom-fc-input").addEventListener("submit", event => {
 });
 
 
-// TODO Mazani custom karet zanechava stiny, ktere dalsi karty posouvaji. Je to dost nahodne. Opravit metodu mazani.
+// TODO Input validation. Input with string (slovo1a, slovo1b; slovo2a, slovo2b). Output string to be shared.
